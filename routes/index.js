@@ -5,7 +5,8 @@ router.get('/', async function (ctx, next) {
     title: 'koa2 title'
   };
 
-  await ctx.render('index', {
-  });
+  await ctx.render('index', {});
 })
+
+
 module.exports = router;
