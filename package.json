@@ -4,14 +4,15 @@
   "description": "koa2入门实例",
   "main": "app.js",
   "dependencies": {
-    "koa": "^2.0.1"
+    "koa": "^2.0.1",
+    "koa-router": "^7.1.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --debug --watch ./app.js"
+    "dev": "nodemon --debug app.js"
   },
   "repository": {
     "type": "git",
