@@ -3,12 +3,10 @@ const Router = require('koa-router')
 const page = new Router()
 
 page.get('/404', async (ctx, next) => {
-  const html = `<h1>404! Sorry</h1>`
-  ctx.body = html
+  await ctx.render('404')
   next()
-}).get('/helloworld', async (ctx, next) => {
-  const html = `<h1>helloworld, well done!</h1>`
-  ctx.body = html
+}).get('/hello', async (ctx, next) => {
+  await ctx.render('hello')
   next()
 })
 
