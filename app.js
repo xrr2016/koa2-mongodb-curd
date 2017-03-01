@@ -1,6 +1,6 @@
+const path = require('path')
 const Koa = require('koa')
 const app = new Koa()
-const path = require('path')
 const bodyParser = require('koa-bodyparser')
 const router = require('./router/index')
 const views = require('koa-views')
