@@ -1,14 +1,11 @@
-const Router = require('koa-router')
-const page = require('./page')
-const jsonp = require('./jsonp')
-const router = new Router()
+const router = require('koa-router')()
+const contact = require('./contact')
 
 router.get('/', async (ctx, next) => {
   await ctx.render('index', {title: 'WOOOW!'})
   next()
 })
 
-router.use('/page', page.routes(), page.allowedMethods())
-router.use('/jsonp', jsonp.routes(), jsonp.allowedMethods())
+router.use('/contact', contact.routes(), contact.allowedMethods())
 
 module.exports = router
