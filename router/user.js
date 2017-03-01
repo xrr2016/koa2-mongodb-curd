@@ -9,6 +9,17 @@ user.get('/', async (ctx, next) => {
   const html = await `<h1>Welcome: ${ctx.params.name}</h1>`
   ctx.body = html
   return next()
+}).get('/setCookie', async (ctx, next) => {
+  await ctx.cookies.set('uid', `${Date.now()}`, {
+    domain: 'localhost',
+    path: '/user/setCookie',
+    maxAge: 1000 * 30,
+    expires: new Date('2017-03-02'),
+    httpOnly: false,
+    overwrite: false
+  })
+  ctx.body = 'cookie is setted'
+  return next()
 })
 
 module.exports = user

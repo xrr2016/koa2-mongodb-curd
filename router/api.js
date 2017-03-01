@@ -5,10 +5,6 @@ api.get('/:id', async (ctx, next) => {
   let html = await `<h1>GET ${ctx.params.id}success</h1>`
   ctx.body = html
   return next()
-}).get('/:id?num=', async (ctx, next) => {
-  let html = await `<h1>QUERY ${ctx.querystring} success</h1>`
-  ctx.body = html
-  return next()
 }).post('/:id', async (ctx, next) => {
   const html = await `<h1>POST ${ctx.params.id} success</h1>`
   ctx.body = html
