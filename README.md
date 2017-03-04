@@ -2,12 +2,11 @@
 
 ## 前言
 
-- 使用到的库[mongoose](http://mongoosejs.com/)
-首先需要安装需要的依赖
-
 ## 效果图
 
 ## 开发
+  首先需要安装需要的依赖
+- 使用到的库[mongoose](http://mongoosejs.com/)
 
 ### 数据
 
@@ -17,6 +16,8 @@
 
 ## 结语
 
-## Lisence
+## LICENSE
 
-written by [xrr2016](), 欢迎issue,fork, star.
+[MIT](./LICENSE)  
+
+written by [xrr2016](https://github.com/xrr2016), 欢迎issue,fork, star.
