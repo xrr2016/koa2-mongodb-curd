@@ -25,8 +25,10 @@ async function createMessage (ctx, next) {
 }
 // 编辑一条信息
 async function editMessage (ctx, next) {
+  // 获取请求的数据
+  const message = {content: ctx.request.body.content, tags: ctx.request.body.tags}
   let result = await Message.findByIdAndUpdate({_id: ctx.params._id},
-                     {$set: {content: ctx.body.content, tags: ctx.body.tags, update_at: Date.now}},
+                     {$set: {content: message.content, tags: message.tags, update_at: Date.now()}},
                      {new: true})
   ctx.body = result
   await next()
