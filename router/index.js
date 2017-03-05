@@ -6,6 +6,6 @@ router.get('/', async (ctx, next) => {
   next()
 })
 
-router.use('/message', message.routes(), message.allowedMethods())
+router.use('/messages', message.routes(), message.allowedMethods())
 
 module.exports = router

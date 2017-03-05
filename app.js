@@ -10,7 +10,11 @@ const router = require('./router/index')
 
 // 链接数据库
 mongoose.connect(config.DB)
-mongoose.Promise = global.Pormise
+mongoose.Promise = global.Promise
+const db = mongoose.connection
+db.once('open', () => {
+  console.log('successful connect to mongodb')
+})
 
 const app = new Koa()
 app.use(favicon(path.join(__dirname, './public/imgs/favicon.ico')))

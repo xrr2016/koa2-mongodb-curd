@@ -1,13 +1,19 @@
 const Message = require('../models/message')
 // 获取全部信息
 async function getAllMessage (ctx, next) {
-  let messages = await Message.find({})
+  let messages = await Message.find({}).sort({update_at: -1})
   ctx.body = messages
   await next()
 }
 // 通过author获取信息
 async function getMessagesByAuthor (ctx, next) {
   let messages = await Message.findByAuthor(ctx.params.author)
+  ctx.body = messages
+  await next()
+}
+// 通过tag获取信息
+async function getMessagesByTag (ctx, next) {
+  let messages = await Message.findByTag(ctx.params.tag)
   ctx.body = messages
   await next()
 }
@@ -19,13 +25,15 @@ async function createMessage (ctx, next) {
 }
 // 编辑一条信息
 async function editMessage (ctx, next) {
-  let result = await Message.findByIdAndUpdate({_id: ctx.body._id}, {$set: {content: ctx.body.content}}, {new: true})
+  let result = await Message.findByIdAndUpdate({_id: ctx.params._id},
+                     {$set: {content: ctx.body.content, tags: ctx.body.tags, update_at: Date.now}},
+                     {new: true})
   ctx.body = result
   await next()
 }
 // 删除一条信息
 async function removeMessage (ctx, next) {
-  let result = Message.findByIdAndRemove({_id: ctx.params._id})
+  let result = await Message.findByIdAndRemove({_id: ctx.params._id})
   ctx.body = result
   await next()
 }
@@ -35,5 +43,6 @@ module.exports = {
   createMessage,
   editMessage,
   removeMessage,
+  getMessagesByTag,
   getMessagesByAuthor
 }

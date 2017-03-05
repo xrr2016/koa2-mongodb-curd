@@ -3,14 +3,18 @@ const {
     getAllMessage,
     createMessage,
     editMessage,
-    removeMessage
+    removeMessage,
+    getMessagesByTag,
+    getMessagesByAuthor
 } = require('../controllers/message_controller')
 
 const message = new Router()
 
 message.get('/', getAllMessage)
-    .post('/', createMessage)
-    .put('/:_id', editMessage)
-    .del('/:_id', removeMessage)
+       .get('/:author', getMessagesByAuthor)
+       .get('/:tag', getMessagesByTag)
+       .post('/', createMessage)
+       .put('/:_id', editMessage)
+       .del('/:_id', removeMessage)
 
 module.exports = message
