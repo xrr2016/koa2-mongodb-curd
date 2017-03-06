@@ -27,7 +27,7 @@ app.use(views(path.join(__dirname, 'views'), {
 // 加载路由
 app.use(router.routes()).use(router.allowedMethods())
 // 设置静态资源服务器
-app.use(serve(path.join(__dirname, 'static')))
+app.use(serve(path.join(__dirname, 'public')))
 
 app.listen(config.port, () => {
   console.log(`app listening on port ${config.port}`)
