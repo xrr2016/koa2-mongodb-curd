@@ -1,0 +1,20 @@
+<%- include('./components/header.ejs') %>
+  <div class="row app-login-signup">
+    <div class="col l6 m12 s12 offset-l3">
+      <div class="input-field">
+        <i class="material-icons prefix">perm_identity</i>
+        <input id="username" type="text" autofocus>
+        <label for="username">用户名</label>
+      </div>
+
+      <div class="input-field">
+        <i class="material-icons prefix">lock</i>
+        <input type="password" class="validate">
+        <label for="password">密码</label>
+      </div>
+    </div>
+    <div class="col l6 m12 s12 offset-l3 center-align">
+      <a class="waves-effect waves-light btn cyan">登录</a>
+    </div>
+  </div>
+<%- include('./components/footer.ejs') %>

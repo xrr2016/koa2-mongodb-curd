@@ -3,6 +3,9 @@ html, body{
   flex-direction: column;
   background-color: #f1f1f1;
 }
+input{
+  padding-left: 12px !important;
+}
 .main{
   min-height: 100vh;
   flex: 1 0 auto;
@@ -31,4 +34,8 @@ html, body{
 }
 .app-footer{
   padding-top: 0px !important;
+}
+/*login signup*/
+.app-login-signup{
+  margin-top: 80px;
 }

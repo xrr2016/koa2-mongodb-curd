@@ -1,1 +1,3 @@
-window.alert('hello, world')
+// window.onload = function () {
+//   document.getElementById('username')
+// }

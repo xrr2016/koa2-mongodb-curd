@@ -1,19 +1,19 @@
 const Message = require('../models/message')
 // 获取全部信息
 async function getAllMessage (ctx, next) {
-  let messages = await Message.find({}).sort({update_at: -1})
+  let messages = await Message.find({}).sort({update_at: -1}).exec()
   ctx.body = messages
   await next()
 }
 // 通过author获取信息
 async function getMessagesByAuthor (ctx, next) {
-  let messages = await Message.findByAuthor(ctx.params.author)
+  let messages = await Message.findByAuthor(ctx.params.author).exec()
   ctx.body = messages
   await next()
 }
 // 通过tag获取信息
 async function getMessagesByTag (ctx, next) {
-  let messages = await Message.findByTag(ctx.params.tag)
+  let messages = await Message.findByTag(ctx.params.tag).exec()
   ctx.body = messages
   await next()
 }
