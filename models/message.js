@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const messageSchema = mongoose.Schema({
   content: {type: String, required: true},
   author: {type: String},
-  tags: {type: String},
+  tags: {type: String, default: ''},
   create_at: {type: Date, default: Date.now},
   update_at: {type: Date, default: Date.now}
 })

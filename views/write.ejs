@@ -1,1 +1,17 @@
-
+<%- include('./components/header') %>
+  <div class="row app-message-write">
+    <!-- <h3 class="center-align cyan-text">新的消息</h3> -->
+      <div class="col l6 m12 s12 offset-l3">
+        <form method="post" action="/message/write" enctype="application/x-www-form-urlencoded">
+          <div class="input-field">
+           <i class="material-icons prefix">mode_edit</i>
+           <input id="icon_prefix" type="text" class="validate" name="content">
+           <label for="icon_prefix">写点什么吧</label>
+          </div>
+          <div class="center-align">
+            <input class="btn waves-effect waves-light app-message-submit" type="submit" value="发布" />
+          </div>
+        </form>
+    </div>
+  </div>
+<%- include('./components/footer') %>

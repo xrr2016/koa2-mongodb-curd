@@ -7,10 +7,56 @@
   <title><%= title %></title>
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-  <link rel="stylesheet" href="style/main.css">
+  <!-- <link rel="stylesheet" href="style/main.css"> -->
+  <style>
+    html, body{
+      display: flex;
+      flex-direction: column;
+      background-color: #f1f1f1;
+    }
+    input{
+      padding-left: 12px !important;
+    }
+    .app-main{
+      min-height: 100vh;
+      flex: 1 0 auto;
+    }
+    .app-logo{
+      padding-left: 24px !important;
+    }
+    .app-actions{
+      padding-right: 40px;
+    }
+    .card{
+      position: relative;
+    }
+    .card-title{
+      font-size: 28px !important;
+    }
+    .app-message-edit{
+      position: absolute;
+      top: 16px;
+      right: 16px;
+    }
+    .app-message-info{
+      font-size: 13px;
+      color: #ddd;
+      padding-right: 12px;
+    }
+    .app-footer{
+      padding-top: 0px !important;
+    }
+    /*login signup*/
+    .app-login-signup,.app-message-write{
+      margin-top: 80px;
+    }
+    .app-message-submit{
+      margin-top: 80px;
+    }
+  </style>
 </head>
 <body>
 <!-- navbar -->
 <%- include('./navbar') %>
 <!-- main -->
-<div class="container main">
+<div class="container app-main">

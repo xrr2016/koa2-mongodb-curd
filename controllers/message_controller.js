@@ -7,20 +7,26 @@ async function getAllMessage (ctx, next) {
 }
 // 通过author获取信息
 async function getMessagesByAuthor (ctx, next) {
-  let messages = await Message.findByAuthor(ctx.params.author).exec()
+  let messages = await Message.findByAuthor(ctx.params.author)
   ctx.body = messages
   await next()
 }
 // 通过tag获取信息
 async function getMessagesByTag (ctx, next) {
-  let messages = await Message.findByTag(ctx.params.tag).exec()
+  let messages = await Message.findByTag(ctx.params.tag)
   ctx.body = messages
   await next()
 }
-// 创建一条信息
+// 创建一条信息 GET
+async function renderWriteMessage (ctx, next) {
+  await ctx.render('write', {title: '写条新消息'})
+}
+// 创建一条信息 POST
 async function createMessage (ctx, next) {
-  let result = await Message.create(ctx.request.body)
-  ctx.body = result
+  let message = ctx.request.body
+  let result = await Message.create(message)
+  console.log('release message success', result)
+  ctx.redirect('/')
   await next()
 }
 // 编辑一条信息
@@ -42,6 +48,7 @@ async function removeMessage (ctx, next) {
 
 module.exports = {
   getAllMessage,
+  renderWriteMessage,
   createMessage,
   editMessage,
   removeMessage,

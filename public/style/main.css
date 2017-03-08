@@ -6,7 +6,7 @@ html, body{
 input{
   padding-left: 12px !important;
 }
-.main{
+.app-main{
   min-height: 100vh;
   flex: 1 0 auto;
 }

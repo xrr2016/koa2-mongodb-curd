@@ -2,6 +2,7 @@ const Router = require('koa-router')
 const {
     getAllMessage,
     createMessage,
+    renderWriteMessage,
     editMessage,
     removeMessage,
     getMessagesByTag,
@@ -11,9 +12,11 @@ const {
 const message = new Router()
 
 message.get('/', getAllMessage)
+       .get('/write', renderWriteMessage)
+       .get('/edit/:_id')
        .get('/:author', getMessagesByAuthor)
        .get('/:tag', getMessagesByTag)
-       .post('/', createMessage)
+       .post('/write', createMessage)
        .put('/:_id', editMessage)
        .del('/:_id', removeMessage)
 
