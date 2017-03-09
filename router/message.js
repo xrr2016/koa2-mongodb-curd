@@ -3,6 +3,7 @@ const {
     getAllMessage,
     createMessage,
     renderWriteMessage,
+    renderEditMessage,
     editMessage,
     removeMessage,
     getMessagesByTag,
@@ -13,11 +14,11 @@ const message = new Router()
 
 message.get('/', getAllMessage)
        .get('/write', renderWriteMessage)
-       .get('/edit/:_id')
+       .get('/edit/:_id', renderEditMessage)
        .get('/:author', getMessagesByAuthor)
        .get('/:tag', getMessagesByTag)
        .post('/write', createMessage)
-       .put('/:_id', editMessage)
+       .post('/edit/:_id', editMessage)
        .del('/:_id', removeMessage)
 
 module.exports = message

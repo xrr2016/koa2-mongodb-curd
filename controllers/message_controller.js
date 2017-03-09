@@ -33,15 +33,24 @@ async function createMessage (ctx, next) {
   ctx.redirect('/')
   await next()
 }
-// 编辑一条信息
+// 编辑一条信息 GET
+async function renderEditMessage (ctx, next) {
+  let message = await Message.findById({_id: ctx.params._id})
+  await ctx.render('edit', {
+    title: '编辑消息',
+    message: message
+  })
+  next()
+}
+// 编辑一条信息 POST
 async function editMessage (ctx, next) {
   // 获取请求的数据
   const message = {content: ctx.request.body.content, tags: ctx.request.body.tags}
   let result = await Message.findByIdAndUpdate({_id: ctx.params._id},
                      {$set: {content: message.content, tags: message.tags, update_at: Date.now()}},
                      {new: true})
-  ctx.body = result
-  await next()
+  await ctx.redirect('/', result)
+  next()
 }
 // 删除一条信息
 async function removeMessage (ctx, next) {
@@ -53,6 +62,7 @@ async function removeMessage (ctx, next) {
 module.exports = {
   getAllMessage,
   renderWriteMessage,
+  renderEditMessage,
   createMessage,
   editMessage,
   removeMessage,
