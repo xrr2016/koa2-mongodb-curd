@@ -1,15 +1,19 @@
+// const moment = require('moment')
 const Message = require('../models/message')
 // 获取全部信息
 async function getAllMessage (ctx, next) {
   let messages = await Message.find({}).sort({update_at: -1}).exec()
-  ctx.body = messages
-  await next()
+  await ctx.render('index', {
+    title: '首页',
+    messages: messages
+  })
+  next()
 }
 // 通过author获取信息
 async function getMessagesByAuthor (ctx, next) {
   let messages = await Message.findByAuthor(ctx.params.author)
   ctx.body = messages
-  await next()
+  next()
 }
 // 通过tag获取信息
 async function getMessagesByTag (ctx, next) {
