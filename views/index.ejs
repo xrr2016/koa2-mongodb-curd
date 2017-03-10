@@ -5,13 +5,25 @@
       <div class="card gray">
         <div class="card-content gray-text">
           <span class="card-title flow-text"><%= message.content %></span>
-          <a class="btn-floating btn-mini waves-effect waves-light cyan app-message-edit" href="/message/edit/<%= message._id %>">
-            <i class="material-icons">edit</i>
-          </a>
-          <span class="app-message-info">发布者:&nbsp;<a href=""><%= message.author %></a></span>
-          <span class="app-message-info">发布日期:&nbsp;<%= message.create_at %></span>
-          <span class="app-message-info">最后更新:&nbsp;<%= message.update_at %></span>
+          <% if (!!message.user) { %>
+            <span class="app-message-info">
+              发布者:&nbsp;<a href="/message/<%= message.author %>"><%= message.author %></a>
+            </span>
+          <% } else { %>
+            <span class="app-message-info">发布者:&nbsp;<a href="#">未知</a></span>
+          <% } %>
+          <span class="app-message-info">
+            发布日期:&nbsp;<%= message.create_at.toString().substr(0, 11) %>
+          </span>
+          <span class="app-message-info">
+            最后更新:&nbsp;<%= message.update_at.toString().substr(0, 11) %>
+          </span>
         </div>
+        <div class="card-action app-message-acitons">
+           <a class="cyan-text" href="/message/edit/<%= message._id %>" title="编辑"><i class="material-icons">edit</i></a>
+           <a class="cyan-text" href="/message/remove/<%= message._id %>" title="删除" />
+           <i class="material-icons">delete</i></a>
+         </div>
       </div>
     <% }) %>
   </div>

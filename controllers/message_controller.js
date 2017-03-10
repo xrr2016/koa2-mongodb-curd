@@ -29,9 +29,8 @@ async function renderWriteMessage (ctx, next) {
 async function createMessage (ctx, next) {
   let message = ctx.request.body
   let result = await Message.create(message)
-  console.log('release message success', result)
-  ctx.redirect('/')
-  await next()
+  await ctx.redirect('/', result)
+  next()
 }
 // 编辑一条信息 GET
 async function renderEditMessage (ctx, next) {
@@ -55,8 +54,8 @@ async function editMessage (ctx, next) {
 // 删除一条信息
 async function removeMessage (ctx, next) {
   let result = await Message.findByIdAndRemove({_id: ctx.params._id})
-  ctx.body = result
-  await next()
+  await ctx.redirect('/', result)
+  next()
 }
 
 module.exports = {

@@ -14,11 +14,11 @@ const message = new Router()
 
 message.get('/', getAllMessage)
        .get('/write', renderWriteMessage)
+       .post('/write', createMessage)
+       .get('/remove/:_id', removeMessage)
        .get('/edit/:_id', renderEditMessage)
+       .post('/edit/:_id', editMessage)
        .get('/:author', getMessagesByAuthor)
        .get('/:tag', getMessagesByTag)
-       .post('/write', createMessage)
-       .post('/edit/:_id', editMessage)
-       .del('/:_id', removeMessage)
 
 module.exports = message
