@@ -28,7 +28,13 @@ app.use(views(path.join(__dirname, 'views'), {
 app.use(router.routes()).use(router.allowedMethods())
 // 设置静态资源服务器
 app.use(serve(path.join(__dirname, 'public')))
-
+// 错误处理
+app.use(async (ctx, next) => {
+  if (ctx.status >= 400) {
+    await ctx.render('404', {title: '出错了!'})
+  }
+  next()
+})
 app.listen(config.port, () => {
   console.log(`app listening on port ${config.port}`)
 })
