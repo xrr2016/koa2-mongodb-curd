@@ -16,6 +16,7 @@
     "mongoose": "^4.8.5"
   },
   "devDependencies": {
+    "morgan": "^1.8.1",
     "nodemon": "^1.11.0"
   },
   "scripts": {

@@ -1,14 +1,20 @@
 const Router = require('koa-router')
 const {
   getAllUser,
+  renderLogin,
+  userLogin,
+  renderSignup,
   createUser,
   removeUser
 } = require('../controllers/user_controller')
 
-const message = new Router()
+const user = new Router()
 
-message.get('/', getAllUser)
-       .post('/', createUser)
-       .del('/:_id', removeUser)
+user.get('/', getAllUser)
+    .get('/login', renderLogin)
+    .post('/login', userLogin)
+    .get('/signup', renderSignup)
+    .post('/signup', createUser)
+    .get('/remove/:_id', removeUser)
 
-module.exports = message
+module.exports = user
