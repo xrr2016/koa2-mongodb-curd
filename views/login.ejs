@@ -2,20 +2,19 @@
   <div class="row app-login-signup">
     <h1 class="center-align flow-text cyan-text">登录</h1>
     <div class="col l6 m12 s12 offset-l3">
-      <div class="input-field">
-        <i class="material-icons prefix">perm_identity</i>
-        <input id="username" type="text" autofocus>
-        <label for="username">用户名</label>
-      </div>
-
-      <div class="input-field">
-        <i class="material-icons prefix">lock</i>
-        <input type="password" class="validate">
-        <label for="password">密码</label>
-      </div>
-    </div>
-    <div class="col l6 m12 s12 offset-l3 center-align">
-      <a class="waves-effect waves-light btn cyan">登录</a>
+        <form  action="/user/login" method="post">
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <input type="text" name="username" autofocus>
+            <label for="username">用户名</label>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">lock</i>
+            <input type="password" name="password" class="validate">
+            <label for="password">密码</label>
+          </div>
+        <input type="submit" class="right waves-effect waves-light btn cyan" value="登录">
+      </form>
     </div>
   </div>
 <%- include('./components/footer') %>

@@ -9,14 +9,5 @@ const userSchema = mongoose.Schema({
   create_at: {type: Date, default: Date.now}
 })
 
-userSchema.methods.verifyPassword = async function (pwd) {
-  let hash = await crypto.createHash('sha256', config.secret).update(pwd).digest('hex')
-  if (hash === this.password) {
-    return true
-  } else {
-    return false
-  }
-}
-
 const User = mongoose.model('User', userSchema)
 module.exports = User

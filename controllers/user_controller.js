@@ -15,7 +15,15 @@ async function renderLogin (ctx, next) {
 }
 // 用户登录 POST
 async function userLogin(ctx, next) {
-
+  const username = ctx.request.body.username,
+        password = crypto.createHash('md5', config.secret).update(ctx.request.body.password).digest('hex')
+  const result = await User.findOne({username: username, password: password})
+  if (result) {
+    ctx.redirect('/')
+    ctx.cookies.set('username', username)
+  } else {
+    ctx.redirect('/user/login')
+  }
 }
 
 // 创建用户 GET
@@ -32,7 +40,7 @@ async function createUser (ctx, next) {
     password: hash
   }
   const result = await User.create(user)
-  await ctx.redirect('/' result)
+  await ctx.redirect('/')
   next()
 }
 // 删除用户
