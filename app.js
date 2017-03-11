@@ -1,5 +1,6 @@
 const Koa = require('koa')
 const path = require('path')
+const morgan = require('morgan')
 const views = require('koa-views')
 const favicon = require('koa-favicon')
 const serve = require('koa-static')
@@ -17,6 +18,7 @@ db.once('open', () => {
 })
 
 const app = new Koa()
+app.use(morgan('dev'))
 app.use(favicon(path.join(__dirname, './public/imgs/favicon.ico')))
 // 使用解析请求数据中间件
 app.use(bodyParser())

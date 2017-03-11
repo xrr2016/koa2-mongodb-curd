@@ -1,5 +1,5 @@
 module.exports = {
-  port: 3000,
+  port: process.env.prot || 3000,
   session: {
     secret: 'koa2 messages',
     key: 'koa2 messages',
